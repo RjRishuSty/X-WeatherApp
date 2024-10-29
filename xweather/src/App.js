@@ -48,7 +48,7 @@ function App() {
             <>
               <div className="weather-card">
                 <h2>Temperature</h2>
-                <p>{weatherData.current.temp_c}</p>
+                <p>{weatherData.current.temp_c}°C</p>
               </div>
               <div className="weather-card">
                 <h2>Humidity</h2>
