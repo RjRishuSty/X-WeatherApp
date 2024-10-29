@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 function App() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [isloading, setIsLoading] = useState(false);
+  const inputRef = useRef();
 
   const fetchWeatherData = async () => {
     try {
@@ -28,6 +29,11 @@ function App() {
       fetchWeatherData();
     }
   };
+  useEffect(()=>{
+    if(inputRef.current){
+      inputRef.current.focus();
+    }
+  },[])
   return (
     <div className="App">
       <div className="search">
@@ -35,6 +41,7 @@ function App() {
           type="text"
           placeholder="Enter city name"
           onChange={(e) => setCity(e.target.value)}
+          ref={inputRef}
         />
         <button type="search" onClick={handlerSearch}>
           Search
